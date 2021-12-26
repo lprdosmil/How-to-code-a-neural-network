@@ -131,3 +131,4 @@ for i in range(10000):
         plt.show()
         
         time.sleep(0.5)
+
