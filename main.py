@@ -105,7 +105,7 @@ loss = list()
 nn = createNN([p, 4, 8, 1], Activation.sigmoid, use_bias=False)
 
 for i in range(10000):
-    pred = train(nn, X, Y, mse, 0.005)
+    pred = train(nn, X, Y, lr=0.005)
     
     if i % 50 == 0:
         loss.append(Loss.MSE(pred, Y))
@@ -116,7 +116,7 @@ for i in range(10000):
         
         for i0, x0 in enumerate(_x0):
             for i1, x1 in enumerate(_x1):
-                _y[i0, i1] = train(nn, np.array([[x0, x1]]), Y, mse, 0.005, training=False)[0][0]
+                _y[i0, i1] = train(nn, np.array([[x0, x1]]), Y, training=False)[0][0]
                 
         plt.pcolormesh(_x0, _x1, _y, cmap='coolwarm')
         plt.axis('equal')
